@@ -40,11 +40,11 @@ jobs:
       - run: npm ci
       - run: npm run build --workspace @openkeet/core
       - run: npm run build --workspace @openkeet/desktop
-      - name: verify electron install
+      - name: verify electron install (no launch — CI has no sandbox)
         working-directory: apps/desktop
         run: |
-          npx electron --version
-          ls ../../node_modules/electron/dist/electron 2>/dev/null || ls ../node_modules/electron/dist/electron 2>/dev/null || true
+          node -p "require('electron/package.json').version"
+          test -f ../../node_modules/electron/dist/electron && echo electron-binary-present
       - run: npm run dist --workspace @openkeet/desktop
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
