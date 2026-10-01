@@ -2,6 +2,7 @@
   "name": "@openkeet/desktop",
   "version": "0.1.0",
   "description": "OpenKeet Linux desktop client (Electron + Vite + React)",
+  "author": "OpenKeet Contributors <natasha_klum@proton.me>",
   "license": "MIT",
   "type": "module",
   "main": "dist-electron/main.js",
@@ -26,7 +27,7 @@
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.0",
-    "electron": "^33.0.0",
+    "electron": "33.4.11",
     "electron-builder": "^25.1.8",
     "typescript": "^5.6.0",
     "vite": "^5.4.0"

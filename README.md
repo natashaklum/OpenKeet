@@ -1,5 +1,7 @@
 # OpenKeet — full open-source Keet (P2P encrypted chat)
 
+![build](https://github.com/natashaklum/OpenKeet/actions/workflows/build.yml/badge.svg)
+
 OpenKeet is a clean-room, open-source re-implementation of the [Keet](https://keet.io/) chat client (Holepunch / Pear stack) in TypeScript/JavaScript, with a forkable DHT layer.
 
 > **Legal / reverse-engineering note:** Keet's UI is closed-source. OpenKeet does **not** vendor proprietary Keet binaries. Instead it re-implements a wire-compatible client on top of the **open** Holepunch primitives (HyperDHT, Hyperswarm, Corestore/Hypercore, Autobase) and provides a `vendor/keet-orig/` drop-in directory where *you* may place any obfuscated blobs you have rights to for local analysis. Those blobs are bundled **as-is** (never transpiled) and are optional — the app works without them. See `docs/REVERSE_ENGINEERING.md`.
@@ -67,9 +69,30 @@ This matches the public Holepunch pattern (Hyperswarm topic + Autobase replicati
 `git push` then GitHub Actions builds:
 
 - Linux desktop: `AppImage` + `.deb` (electron-builder) — artefacts on Releases / Actions.
-- Android: `app-debug.apk` (Capacitor + Gradle).
+- Android: `app-debug.apk` (Capacitor + Gradle, preinstalled runner SDK).
 
 See `.github/workflows/build.yml`. No secrets required for debug builds. For signed store builds add `ANDROID_KEYSTORE_*` secrets.
+
+## Git push / auth
+
+Classic PAT needs `repo` + `workflow` scopes (fine-grained needs Contents + Workflows read/write). Save once:
+
+```bash
+git config --global credential.helper store
+git fetch origin # Username: natashaklum, Password: <PAT>
+git push -u origin main
+```
+
+With GitHub CLI (`gh`):
+
+```bash
+export PATH="$HOME/.local/bin:$PATH" # gh lives here on this machine
+export GH_TOKEN="<PAT>"               # or: gh auth login --with-token <<<"$GH_TOKEN"
+gh run list --repo natashaklum/OpenKeet --limit 5
+gh run view <run-id> --repo natashaklum/OpenKeet --log | tail -50
+```
+
+`403 Permission denied` on push with a fine-grained token almost always means Contents and/or Workflows permission is missing, or the repo was created after the token (re-select it under Repository access).
 
 ## Status
 
