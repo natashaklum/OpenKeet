@@ -1,0 +1,34 @@
+{
+  "name": "@openkeet/desktop",
+  "version": "0.1.0",
+  "description": "OpenKeet Linux desktop client (Electron + Vite + React)",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "dev:electron": "tsc -p tsconfig.electron.json && electron .",
+    "build": "npm run build:renderer && npm run build:electron && npm run vendor",
+    "build:renderer": "vite build",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "vendor": "node ../../scripts/bundle-vendor.mjs --src ../../vendor/keet-orig --out dist",
+    "dist": "electron-builder --linux --publish never",
+    "lint": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.electron.json",
+    "test": "node --check dist-electron/main.js && echo desktop-smoke-ok"
+  },
+  "dependencies": {
+    "@openkeet/core": "*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.16.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.6.0",
+    "vite": "^5.4.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@openkeet/dht",
+  "version": "0.1.0",
+  "description": "OpenKeet DHT fork layer (wraps hyperdht with custom bootstrap + bins)",
+  "license": "MIT",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "bin": {
+    "openkeet-dht-bootstrap": "./src/bootstrap.js"
+  },
+  "scripts": {
+    "lint": "node --check src/index.js && node --check src/bootstrap.js",
+    "test": "node --test tests/",
+    "start:bootstrap": "node src/bootstrap.js"
+  },
+  "dependencies": {
+    "hyperdht": "^6.34.0"
+  }
+}

@@ -1,0 +1,78 @@
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+}
+body {
+  margin: 0;
+  background: #0f1419;
+  color: #e7e9ea;
+}
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.sub {
+  color: #8b98a5;
+}
+.card {
+  background: #1a2230;
+  border: 1px solid #2f3a4d;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+}
+.row {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+}
+input,
+textarea {
+  flex: 1;
+  background: #0f1419;
+  color: #e7e9ea;
+  border: 1px solid #2f3a4d;
+  border-radius: 8px;
+  padding: 8px;
+}
+button {
+  background: #1d9bf0;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.msgs {
+  max-height: 320px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 8px 0;
+}
+.msg {
+  display: flex;
+  gap: 8px;
+  background: #0f1419;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+.author {
+  color: #1d9bf0;
+  font-family: monospace;
+}
+.ts {
+  margin-left: auto;
+  color: #8b98a5;
+  font-size: 12px;
+}
+.status {
+  color: #8b98a5;
+  font-size: 13px;
+}

@@ -1,0 +1,38 @@
+{
+  "name": "@openkeet/core",
+  "version": "0.1.0",
+  "description": "OpenKeet core: identity, invites, P2P rooms over Hyperswarm/HyperDHT + Autobase",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test dist/tests/*.test.js",
+    "pretest": "npm run build",
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "dev": "tsc -w -p tsconfig.json"
+  },
+  "dependencies": {
+    "@noble/curves": "^1.8.0",
+    "@noble/hashes": "^1.7.0",
+    "@scure/bip39": "^2.1.0",
+    "autobase": "^7.0.1",
+    "b4a": "^1.6.7",
+    "corestore": "^7.1.0",
+    "hyperdht": "^6.34.0",
+    "hyperswarm": "^4.9.0",
+    "z32": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^20.16.0"
+  }
+}

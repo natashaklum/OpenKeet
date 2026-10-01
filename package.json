@@ -1,0 +1,24 @@
+{
+  "name": "openkeet",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OpenKeet — open-source P2P encrypted chat (Keet-compatible, Holepunch stack)",
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "vendor:bundle": "node scripts/bundle-vendor.mjs",
+    "core:test": "npm run test --workspace @openkeet/core",
+    "desktop:dev": "npm run dev --workspace @openkeet/desktop",
+    "android:dev": "npm run dev --workspace @openkeet/android"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,31 @@
+node_modules/
+dist/
+build/
+out/
+*.log
+.DS_Store
+# Electron
+apps/desktop/dist/
+apps/desktop/dist-electron/
+apps/desktop/release/
+# Capacitor / Android (generated platform, keep config)
+apps/android/dist/
+apps/android/android/
+apps/android/ios/
+# Pear/Bare bundles
+*.bundle.mjs
+.bundle/
+# Storage / keys (never commit)
+storage/
+*.secret
+*.mnemonic
+# Vendor blobs are local-only unless you have rights to distribute
+vendor/keet-orig/*.js
+vendor/keet-orig/*.bundle.*
+!vendor/keet-orig/.gitkeep
+!vendor/keet-orig/README.md
+!vendor/keet-orig/loader.js
+# Misc
+coverage/
+.nyc_output/
+*.tsbuildinfo

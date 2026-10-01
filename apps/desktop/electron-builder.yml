@@ -1,0 +1,14 @@
+appId: open.keet.app
+productName: OpenKeet
+directories:
+  output: release
+files:
+  - dist/**/*
+  - dist-electron/**/*
+  - package.json
+linux:
+  category: Chat
+  target:
+    - AppImage
+    - deb
+  maintainer: OpenKeet Contributors
