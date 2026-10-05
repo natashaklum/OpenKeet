@@ -45,6 +45,19 @@ jobs:
         run: |
           node -p "require('electron/package.json').version"
           test -f ../../node_modules/electron/dist/electron && echo electron-binary-present
+      - name: ensure app-builder binary (electron-builder native helper)
+        run: |
+          uname -m
+          npm --version
+          ls -la node_modules/app-builder-bin/linux/x64/ || true
+          ABB=node_modules/app-builder-bin/linux/x64/app-builder
+          if [ ! -x "$ABB" ]; then
+            echo "app-builder missing/not executable after npm ci — forcing reinstall"
+            npm install --no-save app-builder-bin@5.0.0-alpha.10
+            chmod +x "$ABB" || true
+            ls -la node_modules/app-builder-bin/linux/x64/
+          fi
+          test -x "$ABB" && echo app-builder-present
       - run: npm run dist --workspace @openkeet/desktop
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
